@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 
+import com.minewbridge.MinewSensorCenterManager;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -47,6 +49,19 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
           = (ConnectivityManager) reactContext.getSystemService(reactContext.CONNECTIVITY_SERVICE);
     NetworkInfo activeNetworkInfo = connectivityManager != null ? connectivityManager.getActiveNetworkInfo() : null;
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+}
+
+@ReactMethod
+public void scanDevices(final Promise promise) {
+  MinewSensorCenterManager manager = 	MinewSensorCenterManager.getInstance(context);
+  if(BLETool.isBluetoothTurnOn(context)){
+      manager.startScan(new OnScanSensorResultListener() {
+          @Override
+          public void onScanSensorResult(ArrayList<SensorModule> result) {
+               System.out.println(result);
+          }
+      });
+  }
 }
 
   // /**

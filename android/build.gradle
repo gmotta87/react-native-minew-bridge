@@ -31,6 +31,8 @@ repositories {
 }
 
 dependencies {
+    implementation files('libs/MinewSensorKit.jar')
+    implementation 'org.lucee:bcprov-jdk15on:1.52.0'
     compile 'com.facebook.react:react-native:+'
 }
   

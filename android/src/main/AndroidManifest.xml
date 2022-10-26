@@ -2,5 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.minewbridge.reactnative">
  <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+ <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+//When the targetSdkVersion version is greater than or equal to 31（Android 12）Bluetooth permissions are added as follows
+<uses-permission android:name="android.permission.BLUETOOTH"
+    android:maxSdkVersion="30" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+    android:maxSdkVersion="30" />
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+    android:usesPermissionFlags="neverForLocation"
+    tools:targetApi="s" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
 </manifest>
   
