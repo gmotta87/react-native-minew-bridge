@@ -2,7 +2,8 @@
 package com.minewbridge.reactnative;
 
 import com.facebook.react.bridge.Promise;
-import android.hardware.fingerprint.FingerprintManager;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Build;
 
 import com.facebook.react.bridge.ReactApplicationContext;
