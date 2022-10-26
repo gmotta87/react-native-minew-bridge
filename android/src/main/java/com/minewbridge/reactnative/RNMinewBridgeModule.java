@@ -42,7 +42,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private boolean isNetworkAvailable() {
     ConnectivityManager connectivityManager 
-          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+          = (ConnectivityManager) getSystemService(reactContext.CONNECTIVITY_SERVICE);
     NetworkInfo activeNetworkInfo = connectivityManager != null ? connectivityManager.getActiveNetworkInfo() : null;
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 }
