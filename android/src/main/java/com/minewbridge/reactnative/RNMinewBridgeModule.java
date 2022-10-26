@@ -32,9 +32,10 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void isAvailable(final Promise promise) {
     try {
-      FingerprintManager manager = getFingerprintManager();
-      boolean v = (manager != null && manager.isHardwareDetected() && manager.hasEnrolledFingerprints());
-      promise.resolve(v);
+     PackageManager packageManager = reactContext.getPackageManager();
+      boolean hasGPS = packageManager.hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS);
+
+      promise.resolve(hasGPS);
     } catch (Exception ex) {
       promise.reject("ERR_UNEXPECTED_EXCEPTION", ex);
     }
@@ -44,11 +45,11 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
    * Returns fingerprint manager or null
    * @see https://stackoverflow.com/questions/34409969/how-to-check-device-compatibility-for-finger-print-authentication-in-android
    */
-  private FingerprintManager getFingerprintManager() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      return (AudioManager) reactContext.getSystemService(reactContext.AUDIO_SERVICE);
-    } else {
-      return null;
-    }
-  }
+  // private FingerprintManager getPackManager() {
+  //   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+  //     return (AudioManager) reactContext.getSystemService(reactContext.AUDIO_SERVICE);
+  //   } else {
+  //     return null;
+  //   }
+  // }
 }
