@@ -43,20 +43,20 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private boolean isNetworkAvailable() {
     ConnectivityManager connectivityManager 
-          = (ConnectivityManager) getSystemService(reactContext.CONNECTIVITY_SERVICE);
+          = (ConnectivityManager) reactContext.getSystemService(reactContext.CONNECTIVITY_SERVICE);
     NetworkInfo activeNetworkInfo = connectivityManager != null ? connectivityManager.getActiveNetworkInfo() : null;
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 }
 
-  /**
-   * Returns fingerprint manager or null
-   * @see https://stackoverflow.com/questions/34409969/how-to-check-device-compatibility-for-finger-print-authentication-in-android
-   */
-  private FingerprintManager getFingerprintManager() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      return (FingerprintManager) reactContext.getSystemService(reactContext.FINGERPRINT_SERVICE);
-    } else {
-      return null;
-    }
-  }
+  // /**
+  //  * Returns fingerprint manager or null
+  //  * @see https://stackoverflow.com/questions/34409969/how-to-check-device-compatibility-for-finger-print-authentication-in-android
+  //  */
+  // private FingerprintManager getFingerprintManager() {
+  //   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+  //     return (FingerprintManager) reactContext.getSystemService(reactContext.FINGERPRINT_SERVICE);
+  //   } else {
+  //     return null;
+  //   }
+  // }
 }
