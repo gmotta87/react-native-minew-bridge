@@ -68,7 +68,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                     // start scanning task.
                     // if manager found devices, this block will call back.
                     manager.startScan(scanTrackerCallback); 
-                    return "sucesso"
+                    return "sucesso";
                   }  
         } 
 
