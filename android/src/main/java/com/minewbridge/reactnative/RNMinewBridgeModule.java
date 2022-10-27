@@ -52,7 +52,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   MTTrackerManager manager = mMTTrackerManager.getInstance(reactContext);
                
                     promise.resolve(manager);
-                  }  
+                    
      
        
     } catch (Exception ex) {
