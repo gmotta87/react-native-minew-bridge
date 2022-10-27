@@ -67,7 +67,8 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   if(manager.checkBluetoothState == BluetoothStatePowerOn) {
                     // start scanning task.
                     // if manager found devices, this block will call back.
-                   return manager.startScan(scanTrackerCallback); 
+                    manager.startScan(scanTrackerCallback); 
+                    return "sucesso"
                   }  
         } 
 
