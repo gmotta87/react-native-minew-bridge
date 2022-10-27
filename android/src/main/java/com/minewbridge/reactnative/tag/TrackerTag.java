@@ -3,7 +3,6 @@ package com.minewbridge.reactnative.tag;
 import android.app.Activity;
 import android.widget.Toast;
 
-import com.minewbridge.reactnative.MyApplication;
 import com.minewtech.mttrackit.MTTracker;
 import com.minewtech.mttrackit.enums.ReceiveIndex;
 import com.minewtech.mttrackit.interfaces.ReceiveListener;
@@ -25,7 +24,7 @@ public class TrackerTag {
         public void onReceive(ReceiveIndex index) {
             switch (index) {
                 case InstrucIndex_ButtonPushed:
-                    return mMTTracker.getMacAddress() + " is call you ";
+                    return mMTTracker.getMacAddress();
                 break;
             }
         }
