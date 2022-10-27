@@ -61,7 +61,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                 
                   ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COARSE_LOCATION);
                   // get sharedinstance of Manager
-                  MTTrackerManager manager = MTTrackerManager.getInstance(context);
+                  MTTrackerManager manager = MTTrackerManager.getInstance(reactContext);
 
                   // the bluetooth status of Phone
                   if(manager.checkBluetoothState == BluetoothStatePowerOn) {
