@@ -12,7 +12,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
-import com.minewtech.mttrackit.MTTrackerManager
+import com.minewtech.mttrackit.MTTrackerManager;
 
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
