@@ -54,7 +54,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     }
   }
 
-  private boolean scan() {
+  private  scan() {
    
         if (reactContext.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -67,8 +67,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   if(manager.checkBluetoothState == BluetoothStatePowerOn) {
                     // start scanning task.
                     // if manager found devices, this block will call back.
-                    manager.startScan(scanTrackerCallback); 
-                    return "sucesso";
+                    return  manager.startScan(scanTrackerCallback); 
                   }  
         } 
 
