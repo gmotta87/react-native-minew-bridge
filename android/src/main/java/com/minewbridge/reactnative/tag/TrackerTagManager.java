@@ -97,15 +97,15 @@ public class TrackerTagManager {
         MTTrackerManager.getInstance(mContext).setTrackerManangerListener(trackerManagerListener);
     }
 
-   abstract private TrackerManagerListener trackerManagerListener = new TrackerManagerListener() {
-        @Override
+    private TrackerManagerListener trackerManagerListener = new TrackerManagerListener() {
+        //@Override
         public void onUpdateBindTrackers(ArrayList<MTTracker> mtTrackers) {
             if (listener != null) {
                 listener.onUpdateBindTrackers(bindTags);
             }
         }
 
-        @Override
+       // @Override
         public void onUpdateConnectionState(MTTracker mtTracker, ConnectionState connectionState) {
             if (listener != null) {
                 String macAddress = mtTracker.getMacAddress();
