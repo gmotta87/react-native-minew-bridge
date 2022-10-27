@@ -14,14 +14,52 @@ import com.facebook.react.bridge.Callback;
 
 import com.minewtech.mttrackit.MTTrackerManager;
 
+import minewbridge.reactnative.interfaces.TrackerTagManagerListener;
+import minewbridge.reactnative.tag.BindDevice;
+import minewbridge.reactnative.tag.TrackerTag;
+import minewbridge.reactnative.tag.TrackerTagManager;
+import minewbridge.reactnative.tool.Tools;
+import com.minewtech.mttrackit.TrackerException;
+import com.minewtech.mttrackit.enums.BluetoothState;
+import com.minewtech.mttrackit.enums.ConnectionState;
+import com.minewtech.mttrackit.interfaces.OperationCallback;
+
+
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
-
+  private TrackerTagManager mTrackerTagManager;
+  
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
+    
   }
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+         initManager();
+        // initListener();
+        // initData();
+        // checkBluetooth();
+        // getRequiredPermissions();
+        // Intent intent = new Intent(this, ManagerService.class);
+        // startService(intent);
+    }
+
+    private void initManager() {
+        mTrackerTagManager = TrackerTagManager.getInstance(this);
+        /**
+         * must set a 8 length password ,or app will crash.
+         *
+         */
+       return mTrackerTagManager.setPassword("minew123");
+    }
+
+
 
   @Override
   public String getName() {
@@ -51,18 +89,18 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 }
 
-@ReactMethod
-public void scanDevices(final Promise promise) {
-  MTTrackerManager manager = 	MTTrackerManager.getInstance(context);
-  if(BLETool.isBluetoothTurnOn(context)){
-      manager.startScan(new OnScanSensorResultListener() {
-          @Override
-          public void onScanSensorResult(ArrayList<SensorModule> result) {
-               System.out.println(result);
-          }
-      });
-  }
-}
+// @ReactMethod
+// public void scanDevices(final Promise promise) {
+//   MTTrackerManager manager = 	MTTrackerManager.getInstance(reactContext);
+//   if(BLETool.isBluetoothTurnOn(reactContext)){
+//       manager.startScan(new OnScanSensorResultListener() {
+//           @Override
+//           public void onScanSensorResult(ArrayList<SensorModule> result) {
+//                System.out.println(result);
+//           }
+//       });
+//   }
+// }
 
   // /**
   //  * Returns fingerprint manager or null
