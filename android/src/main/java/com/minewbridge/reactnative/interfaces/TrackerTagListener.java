@@ -1,4 +1,4 @@
-package com.minew.trackerfinderdemo.interfaces;
+package com.minewbridge.reactnative.interfaces;
 
 import com.minewtech.mttrackit.MTTracker;
 import com.minewtech.mttrackit.enums.ConnectionState;

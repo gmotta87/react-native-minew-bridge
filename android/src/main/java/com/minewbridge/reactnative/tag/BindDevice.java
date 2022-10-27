@@ -1,4 +1,4 @@
-package com.minew.trackerfinderdemo.tag;
+package com.minewbridge.reactnative.tag;
 
 import com.google.gson.annotations.Expose;
 

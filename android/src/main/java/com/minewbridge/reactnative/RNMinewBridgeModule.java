@@ -14,11 +14,11 @@ import com.facebook.react.bridge.Callback;
 
 import com.minewtech.mttrackit.MTTrackerManager;
 
-import minewbridge.reactnative.interfaces.TrackerTagManagerListener;
-import minewbridge.reactnative.tag.BindDevice;
-import minewbridge.reactnative.tag.TrackerTag;
-import minewbridge.reactnative.tag.TrackerTagManager;
-import minewbridge.reactnative.tool.Tools;
+import com.minewbridge.reactnative.interfaces.TrackerTagManagerListener;
+import com.minewbridge.reactnative.tag.BindDevice;
+import com.minewbridge.reactnative.tag.TrackerTag;
+import com.minewbridge.reactnative.tag.TrackerTagManager;
+import com.minewbridge.reactnative.tool.Tools;
 import com.minewtech.mttrackit.TrackerException;
 import com.minewtech.mttrackit.enums.BluetoothState;
 import com.minewtech.mttrackit.enums.ConnectionState;

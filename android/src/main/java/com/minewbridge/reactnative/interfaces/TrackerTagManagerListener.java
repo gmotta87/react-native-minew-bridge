@@ -1,6 +1,6 @@
-package com.minew.trackerfinderdemo.interfaces;
+package com.minewbridge.reactnative.interfaces;
 
-import com.minew.trackerfinderdemo.tag.TrackerTag;
+import com.minewbridge.reactnative.tag.TrackerTag;
 import com.minewtech.mttrackit.enums.ConnectionState;
 
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
-package com.minew.trackerfinderdemo.tag;
+package com.minewbridge.reactnative.tag;
 
 import android.content.Context;
 
-import com.minew.trackerfinderdemo.interfaces.ScanCallback;
-import com.minew.trackerfinderdemo.interfaces.TrackerTagManagerListener;
+import com.minewbridge.reactnative.interfaces.ScanCallback;
+import com.minewbridge.reactnative.interfaces.TrackerTagManagerListener;
 import com.minewtech.mttrackit.MTTracker;
 import com.minewtech.mttrackit.MTTrackerManager;
 import com.minewtech.mttrackit.enums.BluetoothState;

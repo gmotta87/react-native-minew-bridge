@@ -1,9 +1,9 @@
-package com.minew.trackerfinderdemo.tag;
+package com.minewbridge.reactnative.tag;
 
 import android.app.Activity;
 import android.widget.Toast;
 
-import com.minew.trackerfinderdemo.MyApplication;
+import com.minewbridge.reactnative.MyApplication;
 import com.minewtech.mttrackit.MTTracker;
 import com.minewtech.mttrackit.enums.ReceiveIndex;
 import com.minewtech.mttrackit.interfaces.ReceiveListener;

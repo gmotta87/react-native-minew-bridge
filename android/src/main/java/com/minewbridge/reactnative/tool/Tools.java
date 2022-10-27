@@ -1,5 +1,6 @@
-package com.minew.trackerfinderdemo.tool;
+package com.minewbridge.reactnative.tool;
 
+import android.os.Bundle;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -7,7 +8,7 @@ import android.preference.PreferenceManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.minew.trackerfinderdemo.tag.BindDevice;
+import com.minewbridge.reactnative.tag.BindDevice;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
