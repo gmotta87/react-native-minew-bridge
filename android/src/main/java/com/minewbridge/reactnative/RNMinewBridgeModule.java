@@ -15,15 +15,6 @@ import com.facebook.react.bridge.Callback;
 
 import com.minewtech.mttrackit.MTTrackerManager;
 
-import com.minewbridge.reactnative.interfaces.TrackerTagManagerListener;
-import com.minewbridge.reactnative.tag.BindDevice;
-import com.minewbridge.reactnative.tag.TrackerTag;
-import com.minewbridge.reactnative.tag.TrackerTagManager;
-import com.minewbridge.reactnative.tool.Tools;
-import com.minewtech.mttrackit.TrackerException;
-import com.minewtech.mttrackit.enums.BluetoothState;
-import com.minewtech.mttrackit.enums.ConnectionState;
-import com.minewtech.mttrackit.interfaces.OperationCallback;
 
 import android.Manifest;
 import androidx.core.content.ContextCompat;
@@ -38,29 +29,6 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     this.reactContext = reactContext;
     
   }
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // initManager();
-        // initListener();
-        // initData();
-        // checkBluetooth();
-        // getRequiredPermissions();
-        // Intent intent = new Intent(this, ManagerService.class);
-        // startService(intent);
-    }
-
-    private void initManager() {
-        mTrackerTagManager = TrackerTagManager.getInstance(this);
-        /**
-         * must set a 8 length password ,or app will crash.
-         *
-         */
-       return mTrackerTagManager.setPassword("minew123");
-    }
 
 
 
