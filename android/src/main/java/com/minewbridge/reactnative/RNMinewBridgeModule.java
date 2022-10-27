@@ -44,7 +44,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         initManager();
+        // initManager();
         // initListener();
         // initData();
         // checkBluetooth();
@@ -75,23 +75,34 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
    *  isAvailable()   Returns true if the fingerprint reader can be used
    */
   @ReactMethod
-  public void isAvailable(final Promise promise) {
+  public void scanDevices(final Promise promise) {
     try {
       // FingerprintManager manager = getFingerprintManager();
       // boolean v = (manager != null && manager.isHardwareDetected() && manager.hasEnrolledFingerprints());
-       promise.resolve(isNetworkAvailable());
+       promise.resolve(scan());
     } catch (Exception ex) {
       promise.reject("ERR_UNEXPECTED_EXCEPTION", ex);
     }
   }
 
-  private boolean isNetworkAvailable() {
-    if (reactContext.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+  private boolean scan() {
+   
+        if (reactContext.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COARSE_LOCATION);
-            return "possui permissao";
+                
+                  ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COARSE_LOCATION);
+                  // get sharedinstance of Manager
+                  MTTrackerManager manager = MTTrackerManager.getInstance(context);
+
+                  // the bluetooth status of Phone
+                  if(manager.checkBluetoothState == BluetoothStatePowerOn) {
+                    // start scanning task.
+                    // if manager found devices, this block will call back.
+                   return manager.startScan(scanTrackerCallback); 
+                  }  
         } 
+
+
 
         
 }
