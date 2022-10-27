@@ -54,7 +54,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     }
   }
 
-  private  scan() {
+  private void scan() {
    
         if (reactContext.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
