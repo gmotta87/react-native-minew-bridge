@@ -14,6 +14,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
 import com.minewtech.mttrackit.MTTrackerManager;
+import com.minewtech.mttrackit.interfaces.ScanTrackerCallback;
 
 
 import android.Manifest;
@@ -22,7 +23,7 @@ import androidx.core.content.ContextCompat;
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
-
+  private ScanTrackerCallback scanTrackerCallback;
   
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
