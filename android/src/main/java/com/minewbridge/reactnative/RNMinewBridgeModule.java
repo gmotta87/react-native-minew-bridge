@@ -24,6 +24,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
   private ScanTrackerCallback scanTrackerCallback;
+  private MTTrackerManager mMTTrackerManager;
   
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -48,8 +49,8 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     try {
              
                   // get sharedinstance of Manager
-                  MTTrackerManager manager = MTTrackerManager.getInstance(reactContext);
-
+                  MTTrackerManager manager = mMTTrackerManager.getInstance(reactContext);
+                  System.out.println(manager);
                   // the bluetooth status of Phone
                   if(manager.checkBluetoothState == BluetoothStatePowerOn) {
                     // start scanning task.
