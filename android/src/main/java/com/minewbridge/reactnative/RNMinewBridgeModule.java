@@ -22,7 +22,7 @@ import androidx.core.content.ContextCompat;
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
-  private TrackerTagManager mTrackerTagManager;
+
   
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
