@@ -7,12 +7,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 
-import com.minewbridge.MinewSensorCenterManager;
-
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+
+import com.minewtech.mttrackit.MTTrackerManager
 
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
@@ -53,7 +53,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
 @ReactMethod
 public void scanDevices(final Promise promise) {
-  MinewSensorCenterManager manager = 	MinewSensorCenterManager.getInstance(context);
+  MTTrackerManager manager = 	MTTrackerManager.getInstance(context);
   if(BLETool.isBluetoothTurnOn(context)){
       manager.startScan(new OnScanSensorResultListener() {
           @Override
