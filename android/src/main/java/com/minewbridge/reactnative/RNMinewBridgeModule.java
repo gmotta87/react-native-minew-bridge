@@ -51,7 +51,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   // get sharedinstance of Manager
                   MTTrackerManager manager = mMTTrackerManager.getInstance(reactContext);
                
-                    promise.resolve(manager);
+                    promise.resolve(manager.checkBluetoothState());
                     
      
        
