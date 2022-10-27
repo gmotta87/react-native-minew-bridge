@@ -46,20 +46,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void scanDevices(final Promise promise) {
     try {
-      // FingerprintManager manager = getFingerprintManager();
-      // boolean v = (manager != null && manager.isHardwareDetected() && manager.hasEnrolledFingerprints());
-       promise.resolve(scan());
-    } catch (Exception ex) {
-      promise.reject("ERR_UNEXPECTED_EXCEPTION", ex);
-    }
-  }
-
-  private void scan() {
-   
-        if (reactContext.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-                
-                  ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COARSE_LOCATION);
+             
                   // get sharedinstance of Manager
                   MTTrackerManager manager = MTTrackerManager.getInstance(reactContext);
 
@@ -67,14 +54,16 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   if(manager.checkBluetoothState == BluetoothStatePowerOn) {
                     // start scanning task.
                     // if manager found devices, this block will call back.
-                    return  manager.startScan(scanTrackerCallback); 
+                    promise.resolve(manager.startScan(scanTrackerCallback));
                   }  
-        } 
+     
+       
+    } catch (Exception ex) {
+      promise.reject("ERR_UNEXPECTED_EXCEPTION", ex);
+    }
+  }
 
-
-
-        
-}
+ 
 
 
 // @ReactMethod
