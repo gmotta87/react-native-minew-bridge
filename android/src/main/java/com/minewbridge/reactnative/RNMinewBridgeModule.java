@@ -15,6 +15,7 @@ import com.facebook.react.bridge.Callback;
 
 import com.minewtech.mttrackit.MTTrackerManager;
 import com.minewtech.mttrackit.interfaces.ScanTrackerCallback;
+import com.minewtech.mttrackit.enums.BluetoothState;
 
 
 import android.Manifest;
@@ -50,7 +51,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
              
                   // get sharedinstance of Manager
                   MTTrackerManager manager = mMTTrackerManager.getInstance(reactContext);
-                    String obj = manager.checkBluetoothState();
+                    BluetoothState obj = manager.checkBluetoothState();
                     promise.resolve(obj);
                     
      
