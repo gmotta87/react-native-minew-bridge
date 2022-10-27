@@ -25,6 +25,8 @@ import com.minewtech.mttrackit.enums.BluetoothState;
 import com.minewtech.mttrackit.enums.ConnectionState;
 import com.minewtech.mttrackit.interfaces.OperationCallback;
 
+import android.Manifest;
+import androidx.core.content.ContextCompat;
 
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
@@ -84,11 +86,16 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
   }
 
   private boolean isNetworkAvailable() {
-    ConnectivityManager connectivityManager 
-          = (ConnectivityManager) reactContext.getSystemService(reactContext.CONNECTIVITY_SERVICE);
-    NetworkInfo activeNetworkInfo = connectivityManager != null ? connectivityManager.getActiveNetworkInfo() : null;
-    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    if (reactContext.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COARSE_LOCATION);
+            return "possui permissao";
+        } 
+
+        
 }
+
 
 // @ReactMethod
 // public void scanDevices(final Promise promise) {
