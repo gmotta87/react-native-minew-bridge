@@ -25,14 +25,8 @@ public class TrackerTag {
         public void onReceive(ReceiveIndex index) {
             switch (index) {
                 case InstrucIndex_ButtonPushed:
-                    final Activity activity = MyApplication.getInstance().getActivity();
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(activity, mMTTracker.getMacAddress() + " is call you ", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    break;
+                    return mMTTracker.getMacAddress() + " is call you ";
+                break;
             }
         }
     };

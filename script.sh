@@ -3,5 +3,5 @@
 git add .
 git commit -m "new"
 git push
-npm version 1.0.28
+npm version 1.0.29
 npm publish
