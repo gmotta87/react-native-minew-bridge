@@ -53,9 +53,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                    
                     Log.d("CalendarModule", "Create event called with name: " + obj
    + " and location: " +  manager);
-                    promise.resolve('ok');
-                    
-     
+                  
        
     } catch (Exception ex) {
       promise.reject("ERR_UNEXPECTED_EXCEPTION", ex);
