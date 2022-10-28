@@ -36,8 +36,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
   private ScanTrackerCallback scanTrackerCallback;
   private MTTrackerManager mTrackerTagManager;
   private List<String> mMinewDevices;
-
-
+  private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
@@ -79,6 +78,11 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   // if manager found devices, this block will call back.
 
                   initManager();
+                  if ( ContextCompat.checkSelfPermission( reactContext, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+
+            ActivityCompat.requestPermissions( getCurrentActivity(), new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
+                    MY_PERMISSION_ACCESS_COARSE_LOCATION );
+        }
                   manager.startScan(scanTrackerCallback);
 
                   Log.d("msg", String.valueOf(manager.scannedTrackers));
