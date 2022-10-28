@@ -50,10 +50,10 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     try {
                   // get sharedinstance of Manager
                   MTTrackerManager manager = MTTrackerManager.getInstance(reactContext);
-                    BluetoothState obj = manager.checkBluetoothState();
+                   
                     Log.d("CalendarModule", "Create event called with name: " + obj
-   + " and location: " +  manager.checkBluetoothState);
-                    promise.resolve();
+   + " and location: " +  manager);
+                    promise.resolve('ok');
                     
      
        
