@@ -19,20 +19,21 @@ import com.minewtech.mttrackit.enums.BluetoothState;
 
 
 import android.Manifest;
-import androidx.core.content.ContextCompat;
+
 import android.util.Log;
+
+import java.util.List;
 
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
   private ScanTrackerCallback scanTrackerCallback;
-  private MTTrackerManager mMTTrackerManager;
   
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    this.reactContext = reactContext;   
-  }
+    this.reactContext = reactContext;
 
+  }
 
 
   @Override
@@ -40,23 +41,28 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     return "RNMinewBridge";
   }
 
+
     /**
    * PUBLIC REACT API
    *
    *  isAvailable()   Returns true if the fingerprint reader can be used
    */
   @ReactMethod
-  public void scanDevices(final Promise promise) {
+  public void scanDevices() {
     try {
                   // get sharedinstance of Manager
                   MTTrackerManager manager = MTTrackerManager.getInstance(reactContext);
-                   
-                    Log.d("CalendarModule", "Create event called with name: " + obj
-   + " and location: " +  manager);
-                  
+                if(manager.checkBluetoothState() == BluetoothState.BluetoothStatePowerOn) {
+                  // start scanning task.
+                  // if manager found devices, this block will call back.
+                  Log.d("msg", String.valueOf(manager));
+                  manager.startScan(scanTrackerCallback);
+                }
+      Log.d("CalendarModule", "Create event called with name: " +  manager);
+
        
     } catch (Exception ex) {
-      promise.reject("ERR_UNEXPECTED_EXCEPTION", ex);
+      System.out.println("ERR_UNEXPECTED_EXCEPTION");
     }
   }
 
