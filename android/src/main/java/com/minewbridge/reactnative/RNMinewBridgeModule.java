@@ -1,36 +1,30 @@
 
 package com.minewbridge.reactnative;
 
-import com.facebook.react.bridge.Promise;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Build;
-import android.os.Bundle;
-
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 
+import com.minewtech.mttrackit.MTTracker;
 import com.minewtech.mttrackit.MTTrackerManager;
 import com.minewtech.mttrackit.interfaces.ScanTrackerCallback;
 import com.minewtech.mttrackit.enums.BluetoothState;
 
 
-import android.Manifest;
-
 import android.util.Log;
 
+import java.util.LinkedList;
 import java.util.List;
-
-import javax.security.auth.callback.PasswordCallback;
 
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
   private ScanTrackerCallback scanTrackerCallback;
   private MTTrackerManager mTrackerTagManager;
+  private List<String> mMinewDevices;
+
+
+
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
@@ -59,17 +53,22 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
    * PUBLIC REACT API
    *
    *  isAvailable()   Returns true if the fingerprint reader can be used
+   * @return
    */
   @ReactMethod
-  public void scanDevices() {
+  public LinkedList<MTTracker> scanDevices() {
     try {
                   // get sharedinstance of Manager
                   MTTrackerManager manager = MTTrackerManager.getInstance(reactContext);
                 if(manager.checkBluetoothState() == BluetoothState.BluetoothStatePowerOn) {
                   // start scanning task.
                   // if manager found devices, this block will call back.
-                  Log.d("msg", String.valueOf(manager.checkBluetoothState()));
+                  initManager();
+
                   manager.startScan(scanTrackerCallback);
+
+                  Log.d("msg", String.valueOf(manager.scannedTrackers));
+                 return mTrackerTagManager.scannedTrackers;
                 }
       Log.d("CalendarModule", "Create event called with name: " +  manager);
 
@@ -77,6 +76,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     } catch (Exception ex) {
       System.out.println("ERR_UNEXPECTED_EXCEPTION");
     }
+    return null;
   }
 
  
