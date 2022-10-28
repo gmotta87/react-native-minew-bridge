@@ -20,6 +20,7 @@ import com.minewtech.mttrackit.enums.BluetoothState;
 
 import android.Manifest;
 import androidx.core.content.ContextCompat;
+import android.util.Log;
 
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
@@ -29,8 +30,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
   
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    this.reactContext = reactContext;
-    
+    this.reactContext = reactContext;   
   }
 
 
@@ -48,12 +48,12 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void scanDevices(final Promise promise) {
     try {
-             
                   // get sharedinstance of Manager
-                  MTTrackerManager manager = mMTTrackerManager.getInstance(reactContext);
-                    BluetoothState obj = manager.checkBluetoothState;
-                    System.out.println(obj);
-                    promise.resolve(obj);
+                  MTTrackerManager manager = MTTrackerManager.getInstance(reactContext);
+                    BluetoothState obj = manager.checkBluetoothState();
+                    Log.d("CalendarModule", "Create event called with name: " + obj
+   + " and location: " +  manager.checkBluetoothState);
+                    promise.resolve();
                     
      
        
