@@ -24,11 +24,13 @@ import android.util.Log;
 
 import java.util.List;
 
+import javax.security.auth.callback.PasswordCallback;
+
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
   private ScanTrackerCallback scanTrackerCallback;
-  
+  private MTTrackerManager mTrackerTagManager;
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
@@ -42,7 +44,18 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
   }
 
 
+
+  private void initManager() {
+    mTrackerTagManager = mTrackerTagManager.getInstance(reactContext);
     /**
+     * must set a 8 length password ,or app will crash.
+     *
+     */
+    mTrackerTagManager.setPassword("minew123");
+  }
+
+
+  /**
    * PUBLIC REACT API
    *
    *  isAvailable()   Returns true if the fingerprint reader can be used
@@ -55,7 +68,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                 if(manager.checkBluetoothState() == BluetoothState.BluetoothStatePowerOn) {
                   // start scanning task.
                   // if manager found devices, this block will call back.
-                  Log.d("msg", String.valueOf(manager));
+                  Log.d("msg", String.valueOf(manager.checkBluetoothState()));
                   manager.startScan(scanTrackerCallback);
                 }
       Log.d("CalendarModule", "Create event called with name: " +  manager);
