@@ -9,11 +9,16 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
+import com.minewbridge.reactnative.interfaces.ScanCallback;
+import com.minewbridge.reactnative.tag.TrackerTag;
+import com.minewbridge.reactnative.tag.BindDevice;
+import com.minewbridge.reactnative.tag.TrackerTagManager;
+import com.minewbridge.reactnative.tool.Tools;
 import com.minewtech.mttrackit.MTTrackerManager;
 import com.minewtech.mttrackit.b.e;
 import com.minewtech.mttrackit.interfaces.ScanTrackerCallback;
 import com.minewtech.mttrackit.enums.BluetoothState;
-
+import com.minewtech.mttrackit.interfaces.ConnectionStateCallback;
 
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -25,8 +30,9 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
   private ScanTrackerCallback scanTrackerCallback;
-  private MTTrackerManager mTrackerTagManager;
+  private TrackerTagManager mTrackerTagManager;
   private List<String> mMinewDevices;
+
   private static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
   public RNMinewBridgeModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -70,6 +76,8 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   // if manager found devices, this block will call back.
 
                   initManager();
+                  initTagManager();
+                  initData();
                   if ( ContextCompat.checkSelfPermission( reactContext, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
                     Log.d("msg###","sem permissao");
                   return String.valueOf("sem permissao para localizacao");
@@ -95,8 +103,23 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
     return null;
   }
 
- 
 
+  private void initTagManager() {
+    mTrackerTagManager = TrackerTagManager.getInstance(reactContext);
+  }
+
+  private void initData() {
+    Tools.isScan = true;
+    mTrackerTagManager.startScan(scanCallback);
+  }
+
+  private ScanCallback scanCallback = new ScanCallback() {
+    @Override
+    public void onScannedTracker(List<TrackerTag> trackerTags) {
+      Log.d("rastreados", String.valueOf(trackerTags));
+
+    }
+  };
 
 // @ReactMethod
 // public void scanDevices(final Promise promise) {
