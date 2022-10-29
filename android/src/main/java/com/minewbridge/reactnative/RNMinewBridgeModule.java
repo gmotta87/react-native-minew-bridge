@@ -85,6 +85,8 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   }else{
                     try{
                      manager.startScan(scanTrackerCallback);
+                     mTrackerTagManager.startScan(scanCallback);
+
                      Log.d("msg!!!", String.valueOf(manager.scannedTrackers));
                       String[] arrayOfDevices = manager.scannedTrackers.toArray(new String[manager.scannedTrackers.size()]);
                        promise.resolve(Arrays.toString(arrayOfDevices));
