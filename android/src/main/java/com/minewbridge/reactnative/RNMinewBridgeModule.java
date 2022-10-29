@@ -77,6 +77,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                     try{
                      manager.startScan(scanTrackerCallback);
                      Log.d("msg!!!", String.valueOf(manager.scannedTrackers));
+                     promise.resolve(manager.scannedTrackers);
                     }catch (Exception err){
                       promise.reject("502",  err);
                     }
