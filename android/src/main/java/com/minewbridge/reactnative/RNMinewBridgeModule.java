@@ -10,6 +10,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 import com.minewtech.mttrackit.MTTrackerManager;
+import com.minewtech.mttrackit.b.e;
 import com.minewtech.mttrackit.interfaces.ScanTrackerCallback;
 import com.minewtech.mttrackit.enums.BluetoothState;
 
@@ -73,9 +74,12 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                   return String.valueOf("sem permissao para localizacao");
 
                   }else{
+                    try{
                      manager.startScan(scanTrackerCallback);
                      Log.d("msg!!!", String.valueOf(manager.scannedTrackers));
-                  promise.reject("502",  "ERRO");
+                    }catch (Exception err){
+                      promise.reject("502",  err);
+                    }
                   }
 
                 }
