@@ -18,6 +18,7 @@ import com.minewtech.mttrackit.enums.BluetoothState;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
@@ -78,7 +79,7 @@ public class RNMinewBridgeModule extends ReactContextBaseJavaModule {
                      manager.startScan(scanTrackerCallback);
                      Log.d("msg!!!", String.valueOf(manager.scannedTrackers));
                       String[] arrayOfDevices = manager.scannedTrackers.toArray(new String[manager.scannedTrackers.size()]);
-                       promise.resolve(arrayOfDevices);
+                       promise.resolve(Arrays.toString(arrayOfDevices));
                     }catch (Exception err){
                       promise.reject("502",  err);
                     }
